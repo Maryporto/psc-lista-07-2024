@@ -1,15 +1,61 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
+    public class tempMonth {
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            double[] temperaturas = new double[12];
+
+            for (int i = 0; i < 12; i++) {
+                System.out.print("Digite a temperatura média do mês " + (i+1) + ": ");
+                temperaturas[i] = scanner.nextDouble();
+            }
+
+            double soma = 0;
+            for (double temperatura : temperaturas) {
+                soma += temperatura;
+            }
+            double mediaAnual = soma / 12;
+
+            System.out.println("Temperaturas acima da média anual (" + mediaAnual + "ºC):");
+            for (int i = 0; i < 12; i++) {
+                if (temperaturas[i] > mediaAnual) {
+                    String mes = obterNomeDoMes(i + 1);
+                    System.out.println(mes + " - " + temperaturas[i] + "ºC");
+                }
+            }
+
+            scanner.close();
+        }
+
+        public static String obterNomeDoMes(int numeroMes) {
+            switch (numeroMes) {
+                case 1:
+                    return "Janeiro";
+                case 2:
+                    return "Fevereiro";
+                case 3:
+                    return "Março";
+                case 4:
+                    return "Abril";
+                case 5:
+                    return "Maio";
+                case 6:
+                    return "Junho";
+                case 7:
+                    return "Julho";
+                case 8:
+                    return "Agosto";
+                case 9:
+                    return "Setembro";
+                case 10:
+                    return "Outubro";
+                case 11:
+                    return "Novembro";
+                case 12:
+                    return "Dezembro";
+                default:
+                    return "Mês inválido";
+            }
         }
     }
-}
